@@ -151,8 +151,8 @@ jobs:
       - name: Clone YouLoop
         run: git clone --quiet --depth=1 https://github.com/bhackel/YouLoop.git
 
-     # - name: Clone Alderis
-     #   run: git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
+      - name: Clone Alderis
+        run: git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
 
      # - name: Clone YouSlider
      #   run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSlider.git
@@ -269,7 +269,13 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youloop.deb
 
-      # YouSlider and Alderis
+      - name: Build Alderis
+        run: |
+          cd Alderis
+          make clean package DEBUG=0 FINALPACKAGE=1 ARCHS=arm64
+          mv packages/*.deb ${{ github.workspace }}/alderis.deb
+
+      # YouSlider
 
       - name: Build YouChooseQuality
         run: |
