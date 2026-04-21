@@ -374,7 +374,7 @@
             [indicesToRemove addIndex:i];
         }
         if ([pID isEqualToString:@"FEuploads"]) {
-            [self removeDromSuperview];
+            [self removeFromSuperview];
         }
         // if ([pID isEqualToString:@"FEsubscriptions"]) {
         //     [indicesToRemove addIndex:i];
