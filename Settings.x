@@ -9,6 +9,7 @@
 #import <YouTubeHeader/YTSettingsSectionItemManager.h>
 #import <YouTubeHeader/YTSettingsViewController.h>
 #import <YouTubeHeader/YTUIUtils.h>
+#import <substrate.h>
 #import "Headers.h"
 
 #define TweakName @"YouMod"
@@ -17,7 +18,7 @@
 #define STRINGIFY(x) #x
 #define TOSTRING(x) STRINGIFY(x)
 
-static const NSInteger TweakSection = 'ymo';
+static const NSInteger TweakSection = 'ytmo';
 
 @interface YTSettingsSectionItemManager (YouMod)
 - (void)updateYouModSectionWithEntry:(id)entry;
@@ -324,7 +325,7 @@ NSBundle *YouModBundle() {
     [sectionItems addObject:player];
 
     // More coming soon...
-    
+
     if ([settingsViewController respondsToSelector:@selector(setSectionItems:forCategory:title:icon:titleDescription:headerHidden:)]) {
         YTIIcon *icon = [%c(YTIIcon) new];
         icon.iconType = YT_TUNE;

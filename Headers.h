@@ -134,7 +134,6 @@
 
 @interface YTPlayerViewController : UIViewController
 @property (nonatomic, assign, readonly) YTPlayerResponse *playerResponse;
-@property (nonatomic, assign, readonly) YTSingleVideoController *activeVideo;
 @property (nonatomic, weak, readwrite) UIViewController *activeVideoPlayerOverlay;
 @property (nonatomic, weak, readwrite) UIViewController *parentViewController;
 @property (nonatomic, weak, readwrite) UIViewController *UIDelegate;
@@ -320,7 +319,8 @@
 - (CGFloat)currentPlaybackRate;
 @end
 
-@interface YTSpeedmasterController : NSObject
+@interface YTNavigationBarTitleView : UIView
+- (void)alignCustomViewToCenterOfWindow;
 @end
 
 @interface YTFormattedStringLabel : UILabel
