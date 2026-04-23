@@ -3,6 +3,7 @@
 #import <YouTubeHeader/_ASDisplayView.h>
 #import <YouTubeHeader/YTIIcon.h>
 #import <YouTubeHeader/YTRightNavigationButtons.h>
+#import <YouTubeHeader/YTIElementRenderer.h>
 #import <YouTubeHeader/YTPlayerBarController.h>
 // #import <YouTubeHeader/YTPlayerViewController.h>
 // #import <YouTubeHeader/YTWatchController.h>
@@ -65,10 +66,18 @@
 @property(readonly, nonatomic) YTIIcon *iconImage;
 @end
 
+@interface YTRightNavigationButtons (YouMod)
+@property (nonatomic, strong) YTQTMButton *notificationButton;
+@property (nonatomic, strong) YTQTMButton *searchButton;
+@end
+
 @interface YTNavigationBarTitleView : UIView
 @end
 
 @interface YTChipCloudCell : UICollectionViewCell
+@end
+
+@interface YTSearchViewController : UIViewController
 @end
 
 @interface YTPlayabilityResolutionUserActionUIController : NSObject
