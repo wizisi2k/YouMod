@@ -167,8 +167,8 @@
 - (void)setClosedCaptionsOrSubtitlesButtonAvailable:(BOOL)arg1 { if (!IS_ENABLED(HideCaptionsButton)) %orig; }
 // Hide cast button
 - (id)playbackRouteButton { return IS_ENABLED(HideCastButtonPlayer) ? nil : %orig; }
-- (void)setPreviousButtonHidden:(BOOL)arg { if (!IS_ENABLED(HidePrevButton)) %orig; }
-- (void)setNextButtonHidden:(BOOL)arg { if (!IS_ENABLED(HideNextButton)) %orig; }
+- (void)setPreviousButtonHidden:(BOOL)arg { IS_ENABLED(HidePrevButton) ? %orig(YES) : %orig; }
+- (void)setNextButtonHidden:(BOOL)arg { IS_ENABLED(HideNextButton) ? %orig(YES) : %orig; }
 
 // TEST
 - (BOOL)titleViewHidden {
