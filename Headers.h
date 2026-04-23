@@ -150,39 +150,8 @@
 @property (nonatomic, weak, readwrite) YTScrollableNavigationController *navigationController;
 @end
 
-@interface YTIVideoDetails : NSObject
-@property (nonatomic, copy, readwrite) NSString *title;
-@property (nonatomic, copy, readwrite) NSString *shortDescription;
-@end
-
-@interface YTIPlayerResponse : NSObject
-@property (nonatomic, assign, readonly) YTIVideoDetails *videoDetails;
-@end
-
 @interface YTPlayerResponse : NSObject
 @property (nonatomic, assign, readonly) YTIPlayerResponse *playerData;
-@end
-
-@interface YTPlayerViewController : UIViewController
-@property (nonatomic, assign, readonly) YTPlayerResponse *playerResponse;
-@property (nonatomic, weak, readwrite) UIViewController *activeVideoPlayerOverlay;
-@property (nonatomic, weak, readwrite) UIViewController *parentViewController;
-@property (nonatomic, weak, readwrite) UIViewController *UIDelegate;
-@property (nonatomic, readonly) NSString *contentVideoID;
-- (void)setActiveCaptionTrack:(id)track;
-- (void)setPlaybackRate:(CGFloat)rate;
-- (void)shortsToRegular;
-- (void)autoFullscreen;
-- (void)turnOffCaptions;
-- (void)setAutoSpeed;
-- (void)autoQuality;
-- (void)play;
-- (void)pause;
-@end
-
-@interface YTPlayerView : UIView
-@property (nonatomic, weak, readwrite) YTPlayerViewController *playerViewDelegate;
-@property (nonatomic, strong, readwrite) UIView *overlayView;
 @end
 
 @interface YTMainAppControlsOverlayView : UIView
@@ -308,10 +277,6 @@
 @property (atomic, copy, readwrite) NSAttributedString *attributedText;
 @end
 
-@interface YTLabel : UILabel
-- (void)setFontAttributes:(id)attributes text:(NSString *)text;
-@end
-
 @interface YTInlinePlayerScrubUserEducationView : UIView
 @property (nonatomic, assign, readwrite) NSUInteger labelType;
 - (YTLabel *)userEducationLabel;
@@ -321,11 +286,6 @@
 @interface YTMainAppVideoPlayerOverlayViewController : UIViewController
 @property (nonatomic, weak, readwrite) YTPlayerViewController *parentViewController;
 - (CGFloat)currentPlaybackRate;
-@end
-
-@interface YTInlinePlayerBarContainerView : UIView
-@property (nonatomic, strong, readwrite) YTLabel *durationLabel;
-@property (nonatomic, strong, readwrite) NSString *endTimeString;
 @end
 
 @interface YTMainAppVideoPlayerOverlayView : UIView
