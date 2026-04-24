@@ -181,9 +181,6 @@ jobs:
       - name: Clone Gonerino
         run: git clone --quiet --depth=1 https://github.com/castdrian/Gonerino.git
 
-      - name: Clone YTweaks
-        run: git clone --quiet --depth=1 https://github.com/fosterbarnes/YTweaks.git
-
       - name: Clone YouGetCaption
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouGetCaption.git
 
@@ -196,8 +193,8 @@ jobs:
       - name: Clone YouTube-X
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouTube-X.git
 
-      #- name: Clone iSponsorBlock
-      #  run: git clone --quiet --depth=1 https://github.com/Galactic-Dev/iSponsorBlock.git
+      - name: Clone iSponsorBlock
+        run: git clone --quiet --depth=1 https://github.com/Galactic-Dev/iSponsorBlock.git
 
       - name: Clone YTVideoErrorAlert
         if: ${{ inputs.ytvid }}
@@ -332,12 +329,6 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ygc.deb
 
-      - name: Build YTweaks
-        run: |
-          cd YTweaks
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/ytweaks.deb
-
       - name: Build YouTube-X
         run: |
           cd YouTube-X
@@ -356,11 +347,11 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/noytpre.deb
 
-      #- name: Build iSponsorBlock
-      #  run: |
-      #    cd iSponsorBlock
-      #    make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless TARGET=iphone:clang:latest:13.0
-      #    mv packages/*.deb ${{ github.workspace }}/isponsorblock.deb
+      - name: Build iSponsorBlock
+        run: |
+          cd iSponsorBlock
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless TARGET=iphone:clang:latest:13.0
+          mv packages/*.deb ${{ github.workspace }}/isponsorblock.deb
 
       - name: Build YTVideoErrorAlert
         if: ${{ inputs.ytvid }}
