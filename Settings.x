@@ -1090,3 +1090,12 @@ NSBundle *YouModBundle() {
 }
 
 %end
+
+%ctor {
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{
+        YTPremiumLogo: @YES,
+        RemoveAds: @YES,
+        AllowsBackgroundPlayback: @YES,
+        HideCreateButton: @YES,
+    }];
+}
