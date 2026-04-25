@@ -1046,18 +1046,6 @@ NSBundle *YouModBundle() {
         settingItemId:0];
     [sectionItems addObject:slowMiniplayer];
 
-    // Disables New Miniplayer
-    YTSettingsSectionItem *newminiplayer = [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"DISABLES_NEW_MINIPLAYER")
-        titleDescription:LOC(@"DISABLES_NEW_MINIPLAYER_DESC") // works only in old yt
-        accessibilityIdentifier:nil
-        switchOn:IS_ENABLED(DisablesNewMiniPlayer)
-        switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
-            [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:DisablesNewMiniPlayer];
-            return YES;
-        }
-        settingItemId:0];
-    [sectionItems addObject:newminiplayer];
-
     // Disables Snackbar
     YTSettingsSectionItem *snackBar = [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"DISABLES_SNACK_BAR")
         titleDescription:LOC(@"DISABLES_SNACK_BAR_DESC")

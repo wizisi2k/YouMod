@@ -148,8 +148,6 @@
 "ARE_YOU_THERE_DIALOG_DESC" = "Hide the dialog when you are inactive in the app for too long.";
 "FIXES_SLOW_MINIPLAYER" = "Fixes slows miniplayer";
 "FIXES_SLOW_MINIPLAYER_DESC" = "Fixes the miniplayer slowness of expanding the video, this only works in older YouTube versions.";
-"DISABLES_NEW_MINIPLAYER" = "Disables new miniplayer";
-"DISABLES_NEW_MINIPLAYER_DESC" = "Use the old-style miniplayer instead of the new one, this only works in older YouTube versions.";
 "DISABLES_SNACK_BAR" = "Disables snack bar";
 "DISABLES_SNACK_BAR_DESC" = "Disables snack bar when pressing some buttons or doing something in the app.";
 "HIDE_STARTUP_ANIMATIONS" = "Hide YouTube's startup animations";
