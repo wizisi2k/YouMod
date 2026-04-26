@@ -1,6 +1,5 @@
 #import "Headers.h"
 
-#define LOC(x) [YouModBundle() localizedStringForKey:x value:nil table:nil]
 #define Prefix @"YouMod"
 
 NSBundle *YouModBundle() {
@@ -15,6 +14,8 @@ NSBundle *YouModBundle() {
     });
     return bundle;
 }
+
+#define LOC(x) [YouModBundle() localizedStringForKey:x value:nil table:nil]
 
 @implementation YouModPrefsManager
 
