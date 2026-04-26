@@ -8,8 +8,8 @@
 "PERFER" = "Perferences";
 "IMPORT" = "Import settings";
 "IMPORT_DESC" = "Load your preferences from a .plist file.";
-"IMPORT" = "Export settings";
-"IMPORT_DESC" = "Send out your preferences to a .plist file.";
+"EXPORT" = "Export settings";
+"EXPORT_DESC" = "Send out your preferences to a .plist file.";
 "RESTORE" = "Restore settings";
 "RESTORE_DESC" = "Load default settings like in fresh install.";
 "ERROR_INVALID_FILE" = "Invaild file";

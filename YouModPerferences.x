@@ -17,7 +17,7 @@
 // Global toast helper
 - (void)showToast:(NSString *)message {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[%c(YTToastResponderEvent) eventWithMessage:message firstResponder:nil] send];
+        [[%c(YTToastResponderEvent) eventWithMessage:message firstResponder:[self parentResponder]] send];
     });
 }
 
