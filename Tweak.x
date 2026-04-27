@@ -1,6 +1,8 @@
 // All Codes are adapt from YTLite and uYouEnhanced + Some of my research
 #import "Headers.h"
 
+#define isDarkMode2 ([[UIApplication sharedApplication] keyWindow].rootViewController.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark)
+
 Class YTILikeResponseClass, YTIDislikeResponseClass, YTIRemoveLikeResponseClass;
 
 // AccessGroupID
@@ -160,6 +162,74 @@ static BOOL isDarkMode(UIView *view) {
     }
 }
 %end
+%end
+
+// OLED theme - implemented by @Tonwalter888
+%hook YTColor
++ (UIColor *)black0 { return IS_ENABLED(OLEDTheme) ? [self blackPure] : %orig; }
++ (UIColor *)black1 { return IS_ENABLED(OLEDTheme) ? [self blackPure] : %orig; }
++ (UIColor *)black2 { return IS_ENABLED(OLEDTheme) ? [self blackPure] : %orig; }
++ (UIColor *)black3 { return IS_ENABLED(OLEDTheme) ? [self blackPure] : %orig; }
++ (UIColor *)black4 { return IS_ENABLED(OLEDTheme) ? [self blackPure] : %orig; }
+%end
+
+%hook YTCommonColorPalette
+- (UIColor *)brandBackgroundSolid {
+    if (IS_ENABLED(OLEDTheme) && isDarkMode2) {
+        return [UIColor blackColor];
+    }
+    return %orig;
+}
+- (UIColor *)brandBackgroundPrimary {
+    if (IS_ENABLED(OLEDTheme) && isDarkMode2) {
+        return [UIColor blackColor];
+    }
+    return %orig;
+}
+- (UIColor *)brandBackgroundSecondary {
+    if (IS_ENABLED(OLEDTheme) && isDarkMode2) {
+        return [UIColor blackColor];
+    }
+    return %orig;
+}
+/* Disabled due to some bugs
+- (UIColor *)background1 {
+    if (IS_ENABLED(OLEDTheme) && isDarkMode2) {
+        return [UIColor blackColor];
+    }
+    return %orig;
+}
+*/
+- (UIColor *)background2 {
+    if (IS_ENABLED(OLEDTheme) && isDarkMode2) {
+        return [UIColor blackColor];
+    }
+    return %orig;
+}
+- (UIColor *)background3 {
+    if (IS_ENABLED(OLEDTheme) && isDarkMode2) {
+        return [UIColor blackColor];
+    }
+    return %orig;
+}
+- (UIColor *)baseBackground {
+    if (IS_ENABLED(OLEDTheme) && isDarkMode2) {
+        return [UIColor blackColor];
+    }
+    return %orig;
+}
+%end
+
+%hook YTCinematicContainerView
+- (void)didMoveToWindow { if (!IS_ENABLED(OLEDTheme) || !isDarkMode2) %orig; }
+- (void)layoutSubviews { if (!IS_ENABLED(OLEDTheme) || !isDarkMode2) %orig; }
+- (void)loadWithModel:(id)arg { if (!IS_ENABLED(OLEDTheme) || !isDarkMode2) %orig; }
+- (id)initWithFrame:(CGRect)arg {
+    if (IS_ENABLED(OLEDTheme) && isDarkMode2) {
+        return nil;
+    }
+    return %orig;
+}
 %end
 
 // _ASDisplayView filters

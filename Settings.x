@@ -254,7 +254,19 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
         }];
     [sectionItems addObject:apper];
 
-    // OLED Keyboard
+    // OLED theme
+    YTSettingsSectionItem *oledtheme = [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"OLED_THEME")
+        titleDescription:LOC(@"OLED_THEME_DESC") // plus known issue
+        accessibilityIdentifier:nil
+        switchOn:IS_ENABLED(OLEDTheme)
+        switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+            [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:OLEDTheme];
+            return YES;
+        }
+        settingItemId:0];
+    [sectionItems addObject:oledtheme];
+
+    // OLED keyboard
     YTSettingsSectionItem *oledkeyboard = [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"OLED_KEYBOARD")
         titleDescription:LOC(@"OLED_KEYBOARD_DESC")
         accessibilityIdentifier:nil
