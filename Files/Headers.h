@@ -197,7 +197,8 @@ typedef NS_ENUM(NSUInteger, GestureSection) {
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer;
 - (void)YouModAutoFullscreen;
 - (void)YouModTurnOffCaptions;
-- (void)setActiveCaptionTrack:(id)arg1 source:(NSUInteger)arg2;
+- (void)setActiveCaptionTrack:(id)arg1 source:(long long)arg2;
+- (void)setPlaybackRate:(float)rate;
 @end
 
 @interface SSOConfiguration : NSObject
