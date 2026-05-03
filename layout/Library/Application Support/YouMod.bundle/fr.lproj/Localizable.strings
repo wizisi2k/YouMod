@@ -32,6 +32,8 @@
 "AUTO_CLEARCACHE_DESC" = "Vider le cache automatiquement lors du lancement de l'application.";
 
 "APPEARANCE" = "Apparence";
+"OLED_THEME" = "OLED dark mode";
+"OLED_THEME_DESC" = "Uses pure black (OLED) color for the app dark theme.";
 "OLED_KEYBOARD" = "Clavier OLED";
 "OLED_KEYBOARD_DESC" = "Applique un effet noir (OLED) au clavier pour le thème sombre.";
 
@@ -78,6 +80,8 @@
 "HIDE_PREV_BUTTON_DESC" = "Cache le bouton précédent/retour dans l'interface vidéo.";
 "HIDE_NEXT_BUTTON" = "Cacher le bouton suivant/passer";
 "HIDE_NEXT_BUTTON_DESC" = "Cache le bouton suivant/passer dans l'interface vidéo.";
+"REPLACE_PREVNEXT_BUTTONS" = "Replace Previous/Next buttons";
+"REPLACE_PREVNEXT_BUTTONS_DESC" = "Replaces the Previous and Next video buttons in the player with Rewind and Fast Forward buttons.";
 "REMOVE_DARK_OVERLAY" = "Supprimer l'overlay sombre";
 "REMOVE_DARK_OVERLAY_DESC" = "Supprime l'overlay sombre de l'interface vidéo.";
 "HIDE_END_SCREEN" = "Cacher les cartes de fin";
@@ -144,6 +148,12 @@
 "OLD_QUALITY_PICKER_DESC" = "Rétablit le menu de sélection de qualité vidéo en version classique (affiche immédiatement toutes les résolutions).";
 "EXTRA_SPEED" = "Options de vitesse supplémentaires";
 "EXTRA_SPEED_DESC" = "Ajoute plus d'options de vitesse de lecture jusqu'à 10x.";
+"DISABLE_HINTS" = "Disable hints";
+"DISABLE_HINTS_DESC" = "Disable the tutorial hints and interactive pop-ups.";
+"FORCE_MINIPLAYER" = "Force miniplayer";
+"FORCE_MINIPLAYER_DESC" = "Allows all videos, including those made for kids, to play in the miniplayer when dismissing the player.";
+"FORCE_SEEKBAR" = "Always show progress bar";
+"FORCE_SEEKBAR_DESC" = "Ensures the progress bar (seekbar) remains visible at all times while in fullscreen mode.";
 "HIDE_LIKE_BUTTON" = "Cacher le bouton J'aime";
 "HIDE_LIKE_BUTTON_DESC" = "Cache le bouton J'aime dans la barre d'actions sous l'interface vidéo.";
 "HIDE_DISLIKE_BUTTON" = "Cacher le bouton Je n'aime pas";

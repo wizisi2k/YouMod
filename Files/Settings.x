@@ -101,7 +101,7 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
 
     // Tweak Version (at the top)
     // Thanks to the original codes from YTweaks by fosterbarnes - https://github.com/fosterbarnes/YTweaks/blob/e921591a89b87256a2b37c4788bd99282f70d9c2/Settings.x
-    YTSettingsSectionItem *tweakVersion = [YTSettingsSectionItemClass itemWithTitle:@"YouMod v1.2.2"
+    YTSettingsSectionItem *tweakVersion = [YTSettingsSectionItemClass itemWithTitle:@"YouMod v1.2.3"
         titleDescription:nil
         accessibilityIdentifier:nil
         detailTextBlock:nil
@@ -167,41 +167,6 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
     [sectionItems addObject:centerytlogo];
     */
 
-    // Section 1
-    // Appearance
-    YTSettingsSectionItem *apper = [YTSettingsSectionItemClass itemWithTitle:nil
-        titleDescription:LOC(@"APPEARANCE")
-        accessibilityIdentifier:nil
-        detailTextBlock:nil
-        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-            return NO;
-        }];
-    [sectionItems addObject:apper];
-
-    // OLED theme
-    YTSettingsSectionItem *oledtheme = [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"OLED_THEME")
-        titleDescription:LOC(@"OLED_THEME_DESC")
-        accessibilityIdentifier:nil
-        switchOn:IS_ENABLED(OLEDTheme)
-        switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
-            [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:OLEDTheme];
-            return YES;
-        }
-        settingItemId:0];
-    [sectionItems addObject:oledtheme];
-
-    // OLED keyboard
-    YTSettingsSectionItem *oledkeyboard = [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"OLED_KEYBOARD")
-        titleDescription:LOC(@"OLED_KEYBOARD_DESC")
-        accessibilityIdentifier:nil
-        switchOn:IS_ENABLED(OLEDKeyboard)
-        switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
-            [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:OLEDKeyboard];
-            return YES;
-        }
-        settingItemId:0];
-    [sectionItems addObject:oledkeyboard];
-
     // Settings
     YTSettingsSectionItem *settings = [YTSettingsSectionItemClass itemWithTitle:nil
         titleDescription:LOC(@"SETTINGS")
@@ -211,6 +176,23 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
             return NO;
         }];
     [sectionItems addObject:settings];
+
+    // Section 1
+    // Appearance
+    YTSettingsSectionItem *appergroup = [YTSettingsSectionItemClass itemWithTitle:LOC(@"APPEARANCE") accessibilityIdentifier:nil detailTextBlock:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+        NSArray <YTSettingsSectionItem *> *rows = @[
+            SETTINGS_HEADER,
+            BASIC_SWITCH(LOC(@"OLED_THEME"), LOC(@"OLED_THEME_DESC"), OLEDTheme),
+            BASIC_SWITCH(LOC(@"OLED_KEYBOARD_DESC"), LOC(@"OLED_KEYBOARD_DESC"), OLEDKeyboard),
+        ];        
+        YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"APPEARANCE") pickerSectionTitle:nil rows:rows selectedItemIndex:0 parentResponder:[self parentResponder]];
+        [settingsViewController pushViewController:picker];
+        return YES;
+    }];
+    YTIIcon *icon0 = [%c(YTIIcon) new];
+    icon0.iconType = 921;
+    appergroup.settingIcon = icon0;
+    [sectionItems addObject:appergroup];
 
     // Section 2
     // Navigation bar
@@ -241,7 +223,7 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
             BASIC_SWITCH(LOC(@"HIDE_SUBBAR"), LOC(@"HIDE_SUBBAR_DESC"), HideSubbar),
             BASIC_SWITCH(LOC(@"HIDE_MUSIC_PLAYLISTS"), LOC(@"HIDE_MUSIC_PLAYLISTS_DESC"), HideGenMusicShelf),
             BASIC_SWITCH(LOC(@"HIDE_FEED_POST"), LOC(@"HIDE_FEED_POST_DESC"), HideFeedPost),
-            // BASIC_SWITCH(LOC(@"HIDE_SHORTS_SHELF"), LOC(@"HIDE_SHORTS_SHELF_DESC"), HideShortsShelf),
+            BASIC_SWITCH(LOC(@"HIDE_SHORTS_SHELF"), LOC(@"HIDE_SHORTS_SHELF_DESC"), HideShortsShelf),
             BASIC_SWITCH(LOC(@"HIDE_SEARCH_HISTORY"), LOC(@"HIDE_SEARCH_HISTORY_DESC"), HideSearchHis),
             BASIC_SWITCH(LOC(@"HIDE_SUB_BUTTON"), LOC(@"HIDE_SUB_BUTTON_DESC"), HideSubButton),
             BASIC_SWITCH(LOC(@"HIDE_SHOP_BUTTON"), LOC(@"HIDE_SHOP_BUTTON_DESC"), HideShoppingButton),
@@ -266,6 +248,7 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
             BASIC_SWITCH(LOC(@"HIDE_CAST_BUTTON_PLAYER"), LOC(@"HIDE_CAST_BUTTON_PLAYER_DESC"), HideCastButtonPlayer),
             BASIC_SWITCH(LOC(@"HIDE_PREV_BUTTON"), LOC(@"HIDE_PREV_BUTTON_DESC"), HidePrevButton),
             BASIC_SWITCH(LOC(@"HIDE_NEXT_BUTTON"), LOC(@"HIDE_NEXT_BUTTON_DESC"), HideNextButton),
+            BASIC_SWITCH(LOC(@"REPLACE_PREVNEXT_BUTTONS"), LOC(@"REPLACE_PREVNEXT_BUTTONS_DESC"), ReplacePrevNextButtons),
             BASIC_SWITCH(LOC(@"REMOVE_DARK_OVERLAY"), LOC(@"REMOVE_DARK_OVERLAY_DESC"), RemoveDarkOverlay),
             BASIC_SWITCH(LOC(@"HIDE_END_SCREEN"), LOC(@"HIDE_END_SCREEN_DESC"), HideEndScreenCards),
             BASIC_SWITCH(LOC(@"REMOVE_AMBIANT"), LOC(@"REMOVE_AMBIANT_DESC"), RemoveAmbiant),
@@ -276,7 +259,7 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
             [YTSettingsSectionItemClass itemWithTitle:LOC(@"GESTURE_AREA")
                 titleDescription:LOC(@"GESTURE_AREA_DESC")
                 accessibilityIdentifier:nil
-                detailTextBlock:nil
+                detailTextBlock:@"•"
                 selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
                     int selectedIndex = 1;
                     int currentVal = INTFORVAL(GestureActivationArea);
@@ -309,7 +292,7 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
             [YTSettingsSectionItemClass itemWithTitle:LOC(@"LEFT_SIDE_GESTURE")
                 titleDescription:nil
                 accessibilityIdentifier:nil
-                detailTextBlock:nil
+                detailTextBlock:@"•"
                 selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
                     int currentVal = [[NSUserDefaults standardUserDefaults] objectForKey:LeftSideGesture] ? INTFORVAL(LeftSideGesture) : 1;
                     NSArray <YTSettingsSectionItem *> *rows = @[
@@ -326,7 +309,7 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
             [YTSettingsSectionItemClass itemWithTitle:LOC(@"RIGHT_SIDE_GESTURE")
                 titleDescription:nil
                 accessibilityIdentifier:nil
-                detailTextBlock:nil
+                detailTextBlock:@"•"
                 selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
                     int currentVal = [[NSUserDefaults standardUserDefaults] objectForKey:RightSideGesture] ? INTFORVAL(RightSideGesture) : 2;
                     NSArray <YTSettingsSectionItem *> *rows = @[
@@ -344,7 +327,7 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
             [YTSettingsSectionItemClass itemWithTitle:LOC(@"GESTURE_HUD_SIZE")
                 titleDescription:LOC(@"GESTURE_HUD_SIZE_DESC")
                 accessibilityIdentifier:nil
-                detailTextBlock:nil
+                detailTextBlock:@"•"
                 selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
                     int currentVal = [[NSUserDefaults standardUserDefaults] objectForKey:@"GestureHUDSize"] ? (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"GestureHUDSize"] : 1;
                     NSArray <YTSettingsSectionItem *> *rows = @[
@@ -362,7 +345,7 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
             [YTSettingsSectionItemClass itemWithTitle:LOC(@"GESTURE_HUD_POSITION")
                 titleDescription:LOC(@"GESTURE_HUD_POSITION_DESC")
                 accessibilityIdentifier:nil
-                detailTextBlock:nil
+                detailTextBlock:@"•"
                 selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
                     int currentVal = [[NSUserDefaults standardUserDefaults] objectForKey:@"GestureHUDPosition"] ? (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"GestureHUDPosition"] : 0;
                     NSArray <YTSettingsSectionItem *> *rows = @[
@@ -390,6 +373,9 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
             BASIC_SWITCH(LOC(@"PORTRAIT_FULLSCREEN"), LOC(@"PORTRAIT_FULLSCREEN_DESC"), PortFull),
             BASIC_SWITCH(LOC(@"OLD_QUALITY_PICKER"), LOC(@"OLD_QUALITY_PICKER_DESC"), OldQualityPicker),
             BASIC_SWITCH(LOC(@"EXTRA_SPEED"), LOC(@"EXTRA_SPEED_DESC"), ExtraSpeed),
+            BASIC_SWITCH(LOC(@"DISABLE_HINTS"), LOC(@"DISABLE_HINTS_DESC"), DisableHints),
+            BASIC_SWITCH(LOC(@"FORCE_MINIPLAYER"), LOC(@"FORCE_MINIPLAYER_DESC"), ForceMiniPlayer),
+            BASIC_SWITCH(LOC(@"FORCE_SEEKBAR"), LOC(@"FORCE_SEEKBAR_DESC"), AlwaysShowSeekbar),
             BASIC_SWITCH(LOC(@"HIDE_LIKE_BUTTON"), LOC(@"HIDE_LIKE_BUTTON_DESC"), HideLikeButton),
             BASIC_SWITCH(LOC(@"HIDE_DISLIKE_BUTTON"), LOC(@"HIDE_DISLIKE_BUTTON_DESC"), HideDisLikeButton),
             BASIC_SWITCH(LOC(@"HIDE_SHARE_BUTTON"), LOC(@"HIDE_SHARE_BUTTON_DESC"), HideShareButton),
@@ -446,7 +432,7 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
             [YTSettingsSectionItemClass itemWithTitle:LOC(@"DEFAULT_TAB")
             titleDescription:LOC(@"DEFAULT_TAB_DESC")
             accessibilityIdentifier:nil
-            detailTextBlock:nil
+            detailTextBlock:@"•"
             selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
                 NSArray <YTSettingsSectionItem *> *rows = @[
                     [YTSettingsSectionItemClass checkmarkItemWithTitle:LOC(@"HOME_NAME") titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
