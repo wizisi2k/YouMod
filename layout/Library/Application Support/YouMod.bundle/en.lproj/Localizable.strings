@@ -32,6 +32,8 @@
 "AUTO_CLEARCACHE_DESC" = "Automatically clears the app cache on startup.";
 
 "APPEARANCE" = "Appearance";
+"OLED_THEME" = "OLED dark mode";
+"OLED_THEME_DESC" = "Uses pure black (OLED) color for the app dark theme.";
 "OLED_KEYBOARD" = "OLED keyboard";
 "OLED_KEYBOARD_DESC" = "Make the keyboard uses a pure black (OLED) color for dark theme.";
 

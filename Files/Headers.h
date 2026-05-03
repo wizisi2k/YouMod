@@ -34,6 +34,7 @@
 #import <YouTubeHeader/YTSingleVideoController.h>
 #import <YouTubeHeader/YTPlayerView.h>
 #import <YouTubeHeader/YTLabel.h>
+#import <YouTubeHeader/YTCommonColorPalette.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <dlfcn.h>
 
@@ -53,6 +54,7 @@
 // Cache
 #define AutoClearCache @"YouModAutoClearCache"
 // Appearance
+#define OLEDTheme @"YouModEnablesOLEDTheme"
 #define OLEDKeyboard @"YouModEnablesOLEDKeyboard"
 // Navigation bar
 #define HideYTLogo @"YouModHideYTLogo"
